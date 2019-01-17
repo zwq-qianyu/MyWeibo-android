@@ -30,7 +30,7 @@ public class AndroidRegisterServlet extends HttpServlet {
 
         try {
             // 注册 JDBC 驱动器
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             // 打开一个连接
             conn = DriverManager.getConnection(Config.DB_URL, Config.USER, Config.PASS);
             stmt = conn.createStatement();
