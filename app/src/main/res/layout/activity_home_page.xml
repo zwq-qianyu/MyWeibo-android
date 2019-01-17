@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <FrameLayout android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="550dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+
+
+
+    <LinearLayout
+        android:id="@+id/main_lLayoutTabMenu"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_bottom_menu_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemChannel"
+                style="@style/TabMenuItem"
+                android:text="主页"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_menu_home_page"
+                />
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemChannelNum"
+                style="@style/tab_menu_bgnum"
+                android:layout_toRightOf="@+id/main_tvTabMenuItemChannel"
+                android:text="99+"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_bottom_menu_write"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemMessage"
+                style="@style/TabMenuItem"
+                android:text="写微博"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_menu_write"
+                />
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemMessageNum"
+                style="@style/tab_menu_bgnum"
+                android:layout_toRightOf="@+id/main_tvTabMenuItemMessage"
+                android:text="99+"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_bottom_menu_message"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemBetter"
+                style="@style/TabMenuItem"
+                android:text="消息"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_menu_message"
+                />
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemBetterNum"
+                style="@style/tab_menu_bgnum"
+                android:layout_toRightOf="@+id/main_tvTabMenuItemBetter"
+                android:text="99+"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_bottom_menu_person"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemMy"
+                style="@style/TabMenuItem"
+                android:text="我"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_menu_person"
+                />
+
+            <TextView
+                android:id="@+id/main_tvTabMenuItemMyNum"
+                style="@style/tab_menu_bgnum"
+                android:layout_toRightOf="@+id/main_tvTabMenuItemMy"
+                android:text="99+"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
