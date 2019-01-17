@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidPostCommentServlet")
+// 评论微博
+//@WebServlet("/AndroidPostCommentServlet")
+@WebServlet("/comment")
 public class AndroidPostCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

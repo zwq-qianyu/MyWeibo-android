@@ -12,8 +12,9 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 // 添加好友
-@WebServlet("/AndroidFindServlet")
-public class AndroidFindServlet extends HttpServlet {
+//@WebServlet("/AndroidFindServlet")
+@WebServlet("/addFriends")
+public class AndroidAddFriendsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }

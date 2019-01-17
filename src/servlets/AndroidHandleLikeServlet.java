@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidHandleLikeServlet")
+// 点赞
+//@WebServlet("/AndroidHandleLikeServlet")
+@WebServlet("/like")
 public class AndroidHandleLikeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

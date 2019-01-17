@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidGeiWeiboListServlet")
+// 根据用户ID获取用于展示的微博内容
+//@WebServlet("/AndroidGeiWeiboListServlet")
+@WebServlet("/getContent")
 public class AndroidGeiWeiboListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

@@ -11,7 +11,9 @@ import java.net.URL;
 
 import config.Config;
 
-@WebServlet("/SendValidateCodeServlet")
+// 发送验证码
+//@WebServlet("/SendValidateCodeServlet")
+@WebServlet("/validate")
 public class SendValidateCodeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);

@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidWriteWeiboServlet")
+// 写微博
+//@WebServlet("/AndroidWriteWeiboServlet")
+@WebServlet("/writeWeibo")
 public class AndroidWriteWeiboServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidGetCommentListServlet")
+// 根据微博ID获取对应的评论信息
+//@WebServlet("/AndroidGetCommentListServlet")
+@WebServlet("/getCommentContent")
 public class AndroidGetCommentListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

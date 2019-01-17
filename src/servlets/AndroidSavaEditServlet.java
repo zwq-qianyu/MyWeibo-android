@@ -13,7 +13,8 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 // 更新个人信息
-@WebServlet("/AndroidSavaEditServlet")
+//@WebServlet("/AndroidSavaEditServlet")
+@WebServlet("/updateUserInfo")
 public class AndroidSavaEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

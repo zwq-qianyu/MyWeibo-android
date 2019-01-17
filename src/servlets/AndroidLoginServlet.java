@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidLoginServlet")
+// 登录
+//@WebServlet("/AndroidLoginServlet")
+@WebServlet("/login")
 public class AndroidLoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

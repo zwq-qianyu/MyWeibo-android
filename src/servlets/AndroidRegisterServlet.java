@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidRegisterServlet")
+// 注册
+//@WebServlet("/AndroidRegisterServlet")
+@WebServlet("/register")
 public class AndroidRegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

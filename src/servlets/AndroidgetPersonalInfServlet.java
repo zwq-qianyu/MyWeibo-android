@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidgetPersonalInfServlet")
+// 获取用户个人信息
+//@WebServlet("/AndroidgetPersonalInfServlet")
+@WebServlet("/getPersonalInfo")
 public class AndroidgetPersonalInfServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
