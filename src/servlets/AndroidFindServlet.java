@@ -1,3 +1,7 @@
+package servlets;
+
+import config.Config;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

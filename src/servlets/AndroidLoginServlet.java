@@ -1,3 +1,7 @@
+package servlets;
+
+import config.Config;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,26 +11,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidPostCommentServlet")
-public class AndroidPostCommentServlet extends HttpServlet {
+@WebServlet("/AndroidLoginServlet")
+public class AndroidLoginServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); //获取out对象
-
-        String comid=request.getParameter("commenID");
-        String creatorName=request.getParameter("creatorName");
-        String creatorID=request.getParameter("creatorID");
-        String str=request.getParameter("content");
-        String content=str.replaceAll(".@@@@.", " ");
-
-        String createTime=request.getParameter("createTime");
-        String weiboID=request.getParameter("weiboID");
-        String bycomid=request.getParameter("bycomid");
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        String tel = request.getParameter("tel");
+        String passwd = request.getParameter("passwd");
 
         Connection conn = null;
         Statement stmt = null;
@@ -37,16 +33,34 @@ public class AndroidPostCommentServlet extends HttpServlet {
             conn = DriverManager.getConnection(Config.DB_URL, Config.USER, Config.PASS);
             stmt = conn.createStatement();
             String sql;
-            sql ="insert into commentab(comid,creatorname,creatorid,content,time,weiboid,bycomid) values('"+comid+"','"+creatorName+"','"+creatorID+
-                    "','"+content+"','"+createTime+"','"+weiboID+"','"+bycomid+"')";
-            stmt.execute(sql);
-            out.print("success");
+            sql = "select tel,password,nickname from userinf where tel='"+tel+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+            PrintWriter out = response.getWriter();
 
+            boolean flag=false;        //判断结果是否存在
+            while(rs.next()){
+                // 通过字段检索
+                flag=true;
+                String sqlpasswdString=rs.getString("password");
+                if(sqlpasswdString.equals(passwd)){
+                    String nikename=rs.getString("nickname");
+                    out.print(nikename);  //密码正确
+                }
+                else{
+                    out.print("wrongpassword");  //密码正确
+                }
 
+            }
+            if(!flag){  //用户不存在
 
-            // 完成后关闭连接
+                out.print("notexist");
+            }
+
+            // 关闭连接
+            rs.close();
             stmt.close();
             conn.close();
+
         }catch(SQLException se) {
             // 处理 JDBC 错误
             se.printStackTrace();

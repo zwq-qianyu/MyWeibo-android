@@ -1,4 +1,6 @@
-import net.sf.json.JSONObject;
+package servlets;
+
+import config.Config;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidgetPersonalInfServlet")
-public class AndroidgetPersonalInfServlet extends HttpServlet {
+@WebServlet("/AndroidPostCommentServlet")
+public class AndroidPostCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -20,11 +22,18 @@ public class AndroidgetPersonalInfServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); //获取out对象
 
-        String userid=request.getParameter("userid");
+        String comid=request.getParameter("commenID");
+        String creatorName=request.getParameter("creatorName");
+        String creatorID=request.getParameter("creatorID");
+        String str=request.getParameter("content");
+        String content=str.replaceAll(".@@@@.", " ");
+
+        String createTime=request.getParameter("createTime");
+        String weiboID=request.getParameter("weiboID");
+        String bycomid=request.getParameter("bycomid");
 
         Connection conn = null;
         Statement stmt = null;
-
         try{
             // 注册 JDBC 驱动器
             Class.forName(Config.JDBC_DRIVER);
@@ -32,35 +41,14 @@ public class AndroidgetPersonalInfServlet extends HttpServlet {
             conn = DriverManager.getConnection(Config.DB_URL, Config.USER, Config.PASS);
             stmt = conn.createStatement();
             String sql;
-            sql = "select userid,nickname,sa,school,tel,emotion,sign from personalinf where userid='"+userid+"'";
-            ResultSet rs = stmt.executeQuery(sql);
-            JSONObject obj = new JSONObject();
-            boolean flag=false;        //判断是否结果是否存在
-            while(rs.next()){
-                // 通过字段检索
-                flag=true;
-                String nickname = rs.getString("nickname");
-                String sa = rs.getString("sa");
-                String school = rs.getString("school");
-                String tel = rs.getString("tel");
-                String emotion = rs.getString("emotion");
-                String sign = rs.getString("sign");
+            sql ="insert into commentab(comid,creatorname,creatorid,content,time,weiboid,bycomid) values('"+comid+"','"+creatorName+"','"+creatorID+
+                    "','"+content+"','"+createTime+"','"+weiboID+"','"+bycomid+"')";
+            stmt.execute(sql);
+            out.print("success");
 
-                obj.put("nickname", nickname);
-                obj.put("sa", sa);
-                obj.put("school", school);
-                obj.put("tel", tel);
-                obj.put("emotion", emotion);
-                obj.put("sign", sign);
-            }
-            rs.close();
-            if(flag) { //返回数据
-                out.print(obj.toString());
-            }
-            else {
-                out.print("notexist");
-            }
-            // 关闭连接
+
+
+            // 完成后关闭连接
             stmt.close();
             conn.close();
         }catch(SQLException se) {
@@ -83,6 +71,5 @@ public class AndroidgetPersonalInfServlet extends HttpServlet {
                 se3.printStackTrace();
             }
         }
-
     }
 }
