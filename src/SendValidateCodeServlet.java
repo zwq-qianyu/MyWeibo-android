@@ -28,7 +28,7 @@ public class SendValidateCodeServlet extends HttpServlet {
         String password = "f704438ed9910f86e067444f48c143ec";  //查看密码请登录用户中心->验证码短信->产品总览->APIKEY
         String user_id = request.getParameter("user_id");
         System.out.println("phone:"+user_id);
-        String validateCode = String.valueOf(mobile_code);
+        Config.ValidateCode = String.valueOf(mobile_code);
         String content = new String("您的验证码是：" + mobile_code + "。请不要把验证码泄露给其他人。");
         System.out.println(content);
         try {
@@ -55,7 +55,7 @@ public class SendValidateCodeServlet extends HttpServlet {
             System.out.println("发送验证码结果："+result);
             in.close();
             PrintWriter out = response.getWriter();
-            out.println(validateCode);  // 将验证码发送到android端
+            out.println(Config.ValidateCode);  // 将验证码发送到android端
         } catch (IOException e) {
             System.out.print("发送验证码失败：");
             e.printStackTrace();

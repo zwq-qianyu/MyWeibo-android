@@ -9,12 +9,6 @@ import java.sql.*;
 
 @WebServlet("/AndroidLoginServlet")
 public class AndroidLoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
-    // 数据库的用户名与密码
-    static final String USER = "root";
-    static final String PASS = "990425";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -32,7 +26,7 @@ public class AndroidLoginServlet extends HttpServlet {
             // 注册 JDBC 驱动器
             Class.forName("com.mysql.jdbc.Driver");
             // 打开一个连接
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(Config.DB_URL, Config.USER, Config.PASS);
             stmt = conn.createStatement();
             String sql;
             sql = "select tel,password,nickname from userinf where tel='"+tel+"'";
