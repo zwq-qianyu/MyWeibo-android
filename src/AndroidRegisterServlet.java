@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "AndroidRegisterServlet")
+@WebServlet("/AndroidRegisterServlet")
 public class AndroidRegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
