@@ -1,6 +1,7 @@
 package servlets;
 
 import config.Config;
+import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/AndroidWriteWeiboServlet")
-public class AndroidWriteWeiboServlet extends HttpServlet {
+// 更新个人信息
+@WebServlet("/AndroidSavaEditServlet")
+public class AndroidSavaEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -22,22 +24,17 @@ public class AndroidWriteWeiboServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); //获取out对象
 
-
-        String weiboid=request.getParameter("weiboid");
-        String userid=request.getParameter("userid");
-        String str=request.getParameter("content");
-        //String str1=str.replaceAll(".####.", "\n");
-        String content=str.replaceAll(".@@@@.", " ");
-
-        String date=request.getParameter("date");
-        String weiboURL=request.getParameter("weiboURL");
-        String commentInf=request.getParameter("commentInf");   // 评论
-        String likeInf=request.getParameter("likeInf");  // 点赞
-        String username=request.getParameter("username");
-
+        String userid=request.getParameter("userid").replaceAll("@@@@@@"," ");
+        String nickname=request.getParameter("nickname").replaceAll("@@@@@@"," ");
+        String sa=request.getParameter("sa").replaceAll("@@@@@@"," ");
+        String school=request.getParameter("school").replaceAll("@@@@@@"," ");
+        String tel=request.getParameter("tel").replaceAll("@@@@@@"," ");
+        String emotion=request.getParameter("emotion").replaceAll("@@@@@@"," ");
+        String sign=request.getParameter("sign").replaceAll("@@@@@@"," ");
 
         Connection conn = null;
         Statement stmt = null;
+
         try{
             // 注册 JDBC 驱动器
             Class.forName(Config.JDBC_DRIVER);
@@ -45,14 +42,31 @@ public class AndroidWriteWeiboServlet extends HttpServlet {
             conn = DriverManager.getConnection(Config.DB_URL, Config.USER, Config.PASS);
             stmt = conn.createStatement();
             String sql;
+            sql = "select userid,nickname,sa,school,tel,emotion,sign from personalinf where userid='"+userid+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+            JSONObject obj=new JSONObject();
+            boolean flag=false;        //判断是否结果是否存在
+            while(rs.next()){
+                // 通过字段检索
+                flag=true;
+            }
+            rs.close();
+            if(flag) { //返回数据
+                //更新personalinf表
+                sql="update personalinf set nickname='"+nickname+"',sa='"+sa+"',school='"+
+                        school+"',tel='"+tel+"',emotion='"+emotion+"',sign='"+sign+"' where userid='"+userid+"'";
+                stmt.execute(sql);
 
-            sql ="insert into weibo values('"+weiboid+"','"+content+"','"+date+"','"+username+"','"+likeInf+"','"+commentInf+"','"+weiboURL+"','"+userid+"')";
-            stmt.execute(sql);
+                //更新userinf表
+                sql="update userinf set nickname='"+nickname+"' where tel='"+userid+"'";
+                stmt.execute(sql);
+                out.print("success");
+            }
+            else {
+                out.print("unsuccess");
+            }
 
-            out.print("writeweibosuccess");
-
-            // 完成后关闭
-            //rs.close();
+            // 完成后关闭连接
             stmt.close();
             conn.close();
 
