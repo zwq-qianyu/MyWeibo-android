@@ -9,7 +9,6 @@ import java.sql.*;
 
 @WebServlet("/AndroidRegisterServlet")
 public class AndroidRegisterServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
     // 数据库的用户名与密码
