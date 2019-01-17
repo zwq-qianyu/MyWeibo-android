@@ -47,12 +47,49 @@ public class AndroidRegisterServlet extends HttpServlet {
             String sql;
             sql = "select tel from userinf  where tel='"+tel+"'";
             ResultSet rs = stmt.executeQuery(sql);
+
+            boolean flag=false;        //判断该用户（查询结果）是否存在
+            while(rs.next()){
+                // 通过字段检索，如果查到，就置为true
+                flag=true;
+            }
+            if(flag){  //用户名已存在
+                out.print("no");
+            }
+            else{  //用户不存在，插入这条记录，即注册
+                sql ="insert into userinf(tel,password,friendsid,likeid,commentid,picurl,nickname) values('"+tel+"','"+password+"','','','','','"+nickname+"')";
+                stmt.execute(sql);
+                sql="insert into personalinf(userid,nickname,sa,school,tel,emotion,sign) values('"+
+                        tel+"','"+nickname+"','','','','','')";
+                stmt.execute(sql);
+                out.print("yes");
+            }
+            // 完成后关闭连接
+            rs.close();
+            stmt.close();
+            conn.close();
+
         }catch(SQLException se){
-
+            // 处理 JDBC 错误
+            se.printStackTrace();
         }catch(Exception e){
-
+            // 处理 Class.forName 错误
+            e.printStackTrace();
         }finally {
-
+            // 关闭资源的块
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+                // 处理 JDBC 错误
+                se2.printStackTrace();
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se3){
+                se3.printStackTrace();
+            }
         }
     }
 }
