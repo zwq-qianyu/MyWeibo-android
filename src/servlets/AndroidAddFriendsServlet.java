@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-// 添加好友
+// 添加好友  ok
 //@WebServlet("/AndroidFindServlet")
 @WebServlet("/addFriends")
 public class AndroidAddFriendsServlet extends HttpServlet {

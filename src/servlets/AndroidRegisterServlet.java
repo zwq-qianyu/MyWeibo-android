@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-// 注册
+// 注册  ok
 //@WebServlet("/AndroidRegisterServlet")
 @WebServlet("/register")
 public class AndroidRegisterServlet extends HttpServlet {

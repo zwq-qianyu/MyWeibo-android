@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-// 写微博
+// 写微博  ok
 //@WebServlet("/AndroidWriteWeiboServlet")
 @WebServlet("/writeWeibo")
 public class AndroidWriteWeiboServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class AndroidWriteWeiboServlet extends HttpServlet {
         PrintWriter out = response.getWriter(); //获取out对象
 
 
-        String weiboid=request.getParameter("weiboid");
+        String weiboid=request.getParameter("weiboid");  //用户的
         String userid=request.getParameter("userid");
         String str=request.getParameter("content");
         //String str1=str.replaceAll(".####.", "\n");

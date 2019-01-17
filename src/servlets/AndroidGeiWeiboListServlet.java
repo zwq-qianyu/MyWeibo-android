@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-// 根据用户ID获取用于展示的微博内容
+// 根据用户ID获取用于展示的微博内容  ok
 //@WebServlet("/AndroidGeiWeiboListServlet")
 @WebServlet("/getContent")
 public class AndroidGeiWeiboListServlet extends HttpServlet {
