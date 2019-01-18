@@ -167,6 +167,7 @@
                 android:id="@+id/main_tvTabMenuItemChannel"
                 style="@style/TabMenuItem"
                 android:text="转发"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_repost"
                 />
@@ -184,6 +185,7 @@
                 android:id="@+id/main_tvTabMenuItemMessage"
                 style="@style/TabMenuItem"
                 android:text="评论"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_commen"
                 />
@@ -200,6 +202,7 @@
                 android:id="@+id/main_tvTabMenuItemBetter"
                 style="@style/TabMenuItem"
                 android:text="点赞"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_like"
                 />

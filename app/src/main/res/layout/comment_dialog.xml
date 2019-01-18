@@ -26,7 +26,7 @@
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_margin="5dp"
             android:hint="发表你的评论..."
             android:textColor="#aa000000"
             android:minLines="4"

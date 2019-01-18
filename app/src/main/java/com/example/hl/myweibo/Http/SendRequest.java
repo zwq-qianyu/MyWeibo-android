@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class SendRequest {
 //    public static String ip="10.0.2.2";
-    public static String ip="192.168.31.162";
+    public static String ip="192.168.43.214";
 
     public byte[] getUrlBytes(String urlSpec) throws IOException {
 

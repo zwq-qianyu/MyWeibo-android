@@ -7,9 +7,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <FrameLayout android:id="@+id/fragment_container"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="550dp" />
+        android:layout_height="630dp" />
 
     <View
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 android:id="@+id/main_tvTabMenuItemChannel"
                 style="@style/TabMenuItem"
                 android:text="主页"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_menu_home_page"
                 />
@@ -58,6 +60,7 @@
                 android:id="@+id/main_tvTabMenuItemMessage"
                 style="@style/TabMenuItem"
                 android:text="写微博"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_menu_write"
                 />
@@ -81,6 +84,7 @@
                 android:id="@+id/main_tvTabMenuItemBetter"
                 style="@style/TabMenuItem"
                 android:text="消息"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_menu_message"
                 />
@@ -104,6 +108,7 @@
                 android:id="@+id/main_tvTabMenuItemMy"
                 style="@style/TabMenuItem"
                 android:text="我"
+                android:textColor="@color/color_light_blue"
                 android:layout_centerInParent="true"
                 android:drawableTop="@drawable/tab_menu_person"
                 />
