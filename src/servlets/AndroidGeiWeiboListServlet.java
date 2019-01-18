@@ -67,7 +67,7 @@ public class AndroidGeiWeiboListServlet extends HttpServlet {
             else{
                 sqlwhere="'"+userid+"'";
             }
-
+            System.out.println("sqlwhere:"+sqlwhere);
 
             System.out.println("展示微博信息的人物列表："+sqlwhere);
 
